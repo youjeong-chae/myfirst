@@ -12,23 +12,23 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="${root }/index.jsp"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-list"></i> 글목록</a>
+        <a class="nav-link" href="${root }/article/list.do"><i class="fas fa-list"></i> 글목록</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-pen-alt"></i> 글쓰기</a>
+        <a class="nav-link" href="${root }/article/write.do"><i class="fas fa-pen-alt"></i> 글쓰기</a>
       </li>    
     </ul>
     
     <u:notLogin>
     <ul class="navbar-nav">
     	<li class="nav-item">
-            <a href="" class="nav-link">회원가입</a>
+            <a href="${root }/join.do" class="nav-link">회원가입</a>
         </li>
     	<li class="nav-item">
-            <a href="" class="nav-link">로그인</a>
+            <a href="${root }/login.do" class="nav-link">로그인</a>
         </li>
     </ul>
     </u:notLogin>
@@ -36,13 +36,13 @@
     <u:isLogin>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a href="" class="nav-link">로그아웃</a>
+            <a href="${root }/logout.do"" class="nav-link">로그아웃</a>
         </li>
         <li class="nav-item">
-            <a href="" class="nav-link">변경</a>
+            <a href="${root }/changePwd.do" class="nav-link">변경</a>
         </li>
           <li class="nav-item">
-            <a href="" class="nav-link">탈퇴</a>
+            <a href="${root }/removeMember.do" class="nav-link">탈퇴</a>
         </li>
     </ul>
     </u:isLogin>

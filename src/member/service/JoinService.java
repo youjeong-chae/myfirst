@@ -3,10 +3,13 @@ package member.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import member.model.MemberDao;
+import jdbc.ConnectionProvider;
+import jdbc.JdbcUtil;
+import member.dao.MemberDao;
+import member.model.Member;
 
 public class JoinService {
-    private MemberDao memverDao = new MemberDao();
+    private MemberDao memberDao = new MemberDao();
     
     public void join(JoinRequest joinReq) {
         Connection con = null;
@@ -30,10 +33,10 @@ public class JoinService {
             
             con.commit();
         } catch (SQLException e) {
-            jdbcUtil.rollback(con);
+            JdbcUtil.rollback(con);
             throw new RuntimeException(e);
         } finally {
-            jdbcUtil.close(con);
+            JdbcUtil.close(con);
         }
     }
 }
