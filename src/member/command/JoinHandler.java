@@ -38,8 +38,8 @@ public class JoinHandler implements CommandHandler {
         // 문자열을 리퀘스트에서 가져와서 joinReq에 id를 저장
         joinReq.setName(req.getParameter("name"));
         joinReq.setPassword(req.getParameter("password"));
-        joinReq.setConfirmPassword(req.getParameter("confirmPassword"));
-
+        joinReq.setConfirmPassword(req.getParameter("confirmPassword"));     
+    
         Map<String, Boolean> errors = new HashMap<>();
         req.setAttribute("errors", errors);
         
