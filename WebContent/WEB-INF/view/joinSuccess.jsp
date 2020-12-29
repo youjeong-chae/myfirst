@@ -14,8 +14,11 @@
 </head>
 <body>
 <u:navbar />
-<div class="container">
-<h1>${param.name }님, 회원 가입에 성공했습니다.</h1>
-</div>
+
+<script>
+alert('${param.name }님, 회원 가입에 성공했습니다.')
+location.href="index.jsp";
+</script>
+
 </body>
 </html>
