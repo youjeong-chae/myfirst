@@ -28,6 +28,7 @@ public class JoinService {
             member.setId(joinReq.getId());
             member.setName(joinReq.getName());
             member.setPassword(joinReq.getPassword());
+            member.setPhone(joinReq.getPhone());
             
             memberDao.insert(con, member);
             

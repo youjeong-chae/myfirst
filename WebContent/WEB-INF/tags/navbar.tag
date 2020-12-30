@@ -4,7 +4,7 @@
 
 <div class="container mb-3">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">중앙프로젝트</a>
+  <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">야옹야옹</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,7 +15,7 @@
         <a class="nav-link" href="${root }/index.jsp"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${root }/article/list.do"><i class="fas fa-list"></i> 글목록</a>
+        <a class="nav-link" href="${root }/article/list.do"><i class="fas fa-list"></i> 게시판</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${root }/article/write.do"><i class="fas fa-pen-alt"></i> 글쓰기</a>

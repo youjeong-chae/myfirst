@@ -18,7 +18,7 @@
       <div class="col-3"></div>
       <div class="col-6">
         <h1>게시글 쓰기</h1>
-        <form action="write.do" method="post">
+        <form action="write.do" method="post" enctype="multipart/form-data">
           <p>
             제목 : <br />
             <input type="text" name="title" value="${param.title }" />
@@ -29,26 +29,15 @@
             내용 : <br />
             <textarea name="content" id="" cols="30" rows="5">${param.content }</textarea>
           </p>
-          <input type="submit" value="새 글 등록" />
+          
+          <p>
+          file1 : <input type="file" name="uploadFile1" /> <br />
+          file2 : <input type="file" name="uploadFile2" />
+          </p>
+          
+          <input type="submit" class="btn btn-primary" value="새 글 등록" />
         </form>
         </div> 
-<%-- 
-<div class="container">
-<h1>게시글 쓰기</h1>
-<form action="write.do" method="post">
-  <p>
-    제목 : <br />
-    <input type="text" name="title" value="${param.title }" />
-    <c:if test="${errors.title }">제목을 입력하세요.</c:if>
-  </p>
-  
-  <p>
-    내용 : <br />
-    <textarea name="content" id="" cols="30" rows="5">${param.content }</textarea>
-  </p>
-  <input type="submit" value="새 글 등록" />
-</form>
-</div> 
---%>
+   </div> 
 </body>
 </html>

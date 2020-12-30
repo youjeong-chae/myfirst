@@ -48,7 +48,9 @@
                 </c:if>
               
               </div>
-              <button type="submit" class="btn btn-primary">로그인</button>
+              <div style="text-align: center">
+              <button type="submit" class="btn btn-primary" >로그인</button>
+              </div>
               
             </form>
         </div>

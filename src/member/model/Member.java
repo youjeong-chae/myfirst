@@ -6,9 +6,16 @@ public class Member {
     private String id;
     private String name;
     private String password;
+    private String phone;
     private Date regDate;
-   
     
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+   
     public String getId() {
         return id;
     }

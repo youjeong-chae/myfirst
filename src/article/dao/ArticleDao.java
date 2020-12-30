@@ -10,13 +10,16 @@ import java.util.Date;
 import java.util.List;
 
 import article.model.Article;
+import article.model.Article2;
 import article.model.Writer;
 import jdbc.JdbcUtil;
 
 public class ArticleDao {
     
+    //insert내용 유라한테 설명한번 들을것
+    
     public int update(Connection conn, int no, String title) throws SQLException {
-        String sql = "UPDATE article "
+        String sql = "UPDATE articles "
                 + "SET title=?, moddate=SYSDATE "
                 + "WHERE article_no=?";
         
@@ -34,7 +37,7 @@ public class ArticleDao {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String sql = "SELECT * "
-                + "FROM article "
+                + "FROM articles "
                 + "WHERE article_no=?";
         
         try {
@@ -55,7 +58,7 @@ public class ArticleDao {
     }
     
     public void increaseReadCount(Connection conn, int no) throws SQLException {
-        String sql = "UPDATE article "
+        String sql = "UPDATE articles "
                 + "SET read_cnt=read_cnt+1 "
                 + "WHERE article_no=?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -97,7 +100,7 @@ public class ArticleDao {
                 + "            article_no "
                 + "            DESC) "
                 + "        rn "
-                + "  FROM article "
+                + "  FROM articles "
                 + ") WHERE rn "
                 + "    BETWEEN ? AND ?";
         
@@ -135,7 +138,7 @@ public class ArticleDao {
     }
     
     public int selectCount(Connection conn) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM article";
+        String sql = "SELECT COUNT(*) FROM articles";
         
         Statement stmt = null;
         ResultSet rs = null;
@@ -157,7 +160,7 @@ public class ArticleDao {
     public Article insert(Connection conn, Article article) 
             throws SQLException {
         // 12c 이상
-        String sql = "INSERT INTO article "
+        String sql = "INSERT INTO articles "
                 + "(writer_id, writer_name, title,"
                 + " regdate, moddate, read_cnt) "
                 + "VALUES (?, ?, ?, SYSDATE, SYSDATE, 0)";
@@ -209,7 +212,7 @@ public class ArticleDao {
 
 
     public void delete(Connection con, int no) throws SQLException {
-        String sql = "DELETE article WHERE article_no=?";
+        String sql = "DELETE articles WHERE article_no=?";
         
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, no);
@@ -217,4 +220,58 @@ public class ArticleDao {
             pstmt.executeUpdate();
         }
     }
+
+
+    public List<Article2> selectMainList(Connection con) throws SQLException {
+        //article2형식의 MainselectList
+        String sql = "SELECT a.article_no, a.title, c.file1 "
+                + "FROM articles a JOIN article_contents c "
+                + "     ON a.article_no = c.article_no "
+                + "ORDER BY a.article_no DESC";
+        //articles a , article contents c => 두 테이블을 조인해서 원하는 컬럼 뽑아내기
+        //? 쿼리스트링이 없으므로 statement 활용 
+        
+        List<Article2> list = new ArrayList<>();
+        
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {
+                Article2 article2 = new Article2();
+                article2.setNumber(rs.getInt(1));
+                article2.setTitle(rs.getString(2));
+                article2.setFileName1(rs.getString(3));
+                
+                list.add(article2);
+            }
+        }
+        
+        return list;
+    }
+
+
 }
+//prepared statement 와 statement의 차이
+//1.쿼리 문장 분석
+//2.컴파일
+//3.실행
+
+//Statement를 사용하면 매번 쿼리를 수행할 때마다 1) ~ 3) 단계를 거치게 되고, 
+//PreparedStatement는 처음 한 번만 세 단계를 거친 후 캐시에 담아 재사용을 한다는 것이다. 
+//만약 동일한 쿼리를 반복적으로 수행한다면 PreparedStatment가 DB에 훨씬 적은 부하를 주며, 성능도 좋다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@ package article.model;
 import java.util.Date;
 
 public class Article {
+    //작성자 , 제목 , 게시물 번호 등등 저장
     private Integer number;
     private Writer writer;
     private String title;

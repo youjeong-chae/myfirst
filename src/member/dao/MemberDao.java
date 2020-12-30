@@ -76,8 +76,8 @@ public class MemberDao {
 
     public void insert(Connection con, Member member) throws SQLException {
         String sql = "INSERT INTO members "
-                + "(memberid, name, password, regdate) "
-                + "VALUES (?, ?, ?, SYSDATE) ";
+                + "(memberid, name, password, phone, regdate) "
+                + "VALUES (?, ?, ?, ?, SYSDATE) ";
         
         PreparedStatement pstmt = null;
         
@@ -86,6 +86,7 @@ public class MemberDao {
             pstmt.setString(1, member.getId());
             pstmt.setString(2, member.getName());
             pstmt.setString(3, member.getPassword());
+            pstmt.setString(4, member.getPhone());
             
             pstmt.executeUpdate();
         } catch (Exception e) {

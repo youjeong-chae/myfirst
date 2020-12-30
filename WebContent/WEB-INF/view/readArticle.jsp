@@ -37,6 +37,13 @@
         <td><u:pre value="${articleData.content.content }" /></td>
       </tr>
       <tr>
+     <td>${articleData.content.fileName1 }</td>
+      	<td colspan="2"><img src="/static/${articleData.article.number }/${articleData.content.fileName1 }" alt="" /></td>
+      </tr>
+      <tr>
+      	<td colspan="2"><img src="/static/${articleData.article.number }/${articleData.content.fileName2 }"  alt="" /></td>
+      </tr>
+      <tr>
         <td colspan="2"><c:set var="pageNo"
             value="${empty param.pageNo ? '1' : param.pageNo }" /> <a
           href="list.do?pageNo=${pageNo}">[목록]</a>

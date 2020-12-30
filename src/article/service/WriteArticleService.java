@@ -22,9 +22,12 @@ public class WriteArticleService {
             conn.setAutoCommit(false);
             
             System.out.println("title1:"+req.getTitle());
-            Article article = toArticle(req);
+            Article article = toArticle(req); 
+            // request객체에 저장된 title과 writer를 article에 저장. 
+            
             System.out.println("title2:"+article.getTitle());
             Article savedArticle = articleDao.insert(conn, article);
+            //articleDao에 입력 ,게시물 번호,콘텐츠,filename1,filename2를 articleDao에 저장
             
             if (savedArticle == null) {
                 throw new RuntimeException("fail to insert article");
@@ -32,7 +35,9 @@ public class WriteArticleService {
             
             ArticleContent content = new ArticleContent(
                     savedArticle.getNumber(),
-                    req.getContent()
+                    req.getContent(),
+                    req.getFileName1(),
+                    req.getFileName2()
                     );
             
             ArticleContent savedContent = contentDao.insert(conn, content);

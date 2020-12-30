@@ -7,6 +7,7 @@ public class JoinRequest {
     private String name;
     private String password;
     private String confirmPassword;
+    private String phone;
     
     public String getId() {
         return id;
@@ -39,12 +40,21 @@ public class JoinRequest {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+    
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public void validate(Map<String, Boolean> errors) {
         checkEmpty(errors, id, "id");
         checkEmpty(errors, name, "name");
         checkEmpty(errors, password, "password");
         checkEmpty(errors, confirmPassword, "confirmPassword");
+        checkEmpty(errors, phone, "phone");
         
         if (!errors.containsKey("confirmPassword")) {
             if (!isPasswordEqualToConfirm()) {

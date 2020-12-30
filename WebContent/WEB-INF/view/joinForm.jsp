@@ -18,7 +18,9 @@
     <div class="row">
       <div class="col-3"></div>
       <div class="col-6">
+      <div style="text-align:center">
       <h1>회원 가입</h1>
+      </div>
     <form action="${root }/join.do" method="post">
       <div class="form-group">
         <label for="input1-id">아이디</label> 
@@ -40,7 +42,6 @@
         <label for="input2-name">이름</label> 
         <input
           type="text" name="name" value="${param.name }" id="input2-name" class="form-control">
-          
           <c:if test="${errors.name }">
             <small class="form-text text-muted">
               이름을 입력하세요. 
@@ -73,12 +74,24 @@
               암호와 확인이 일치하지 않습니다.
             </small>
           </c:if>
+        </div>
+    
+      <div class="form-group">
+        <label for="input5-phone">연락처</label> 
+        <input
+          type="text" name="phone" value="${param.phone }" class="form-control" id="input1-phone">
+            <c:if test="${errors.phone}">
+            <small class="form-text text-muted">
+              연락처를 입력하세요.
+            </small>
+          </c:if>
       </div>
-      <button type="submit" class="btn btn-primary">회원 가입</button>
+        <div style="text-align:center">
+        <button type="submit" class="btn btn-primary">회원 가입</button>
+        </div> 
     </form>
       </div>
       <div class="col-3"></div>
-    </div>
-  </div>
+   </div>
 </body>
 </html>
