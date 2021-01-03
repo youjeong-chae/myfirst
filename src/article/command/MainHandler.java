@@ -18,11 +18,11 @@ public class MainHandler implements CommandHandler {
     @Override
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
         // TODO Auto-generated method stub
-//        ArticlePage articlePage = listService.getArticlePage(1);
+        // ArticlePage articlePage = listService.getArticlePage(1);
         
         List<Article2> articleList = mainService.getList();
         
-        //mainService에 있는 List객체를 articleList에 가져옴.
+        // mainService에 있는 List객체를 articleList에 가져옴.
         
         req.setAttribute("articleList", articleList);
         
