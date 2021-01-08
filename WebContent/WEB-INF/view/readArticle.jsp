@@ -14,48 +14,54 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
  <u:navbar />
   <div class="container">
-    <table border="1" width="100%">
+    <table class="table" >
       <tr>
-        <td>번호</td>
+        <th scope="row">번호</th>
         <td>${articleData.article.number }</td>
       </tr>
       <tr>
-        <td>작성자</td>
+        <th scope="row">작성자</th>
         <td>${articleData.article.writer.name }</td>
       </tr>
       <tr>
-        <td>제목</td>
+        <th scope="row">제목</th>
         <td><c:out value="${articleData.article.title }"></c:out></td>
       </tr>
       <tr>
-        <td>내용</td>
+        <th scope="row">내용</th>
         <td><u:pre value="${articleData.content.content }" /></td>
       </tr>
+   
       <tr>
-     <td>${articleData.content.fileName1 }</td>
-      	<td colspan="2"><img src="/static/${articleData.article.number }/${articleData.content.fileName1 }" alt="" /></td>
+        <td colspan="2" class="text-center">
+            <img src="/static/${articleData.article.number }/${articleData.content.fileName1 }" 
+                 alt="${articleData.content.fileName1 }" width="70%" />
+        </td>
       </tr>
+      
       <tr>
-      	<td colspan="2"><img src="/static/${articleData.article.number }/${articleData.content.fileName2 }"  alt="" /></td>
+      	<td colspan="2" class="text-center">
+            <img src="/static/${articleData.article.number }/${articleData.content.fileName2 }"  
+                alt="${articleData.content.fileName2 }" width="70%" />        
+        </td>
       </tr>
+   
       <tr>
-        <td colspan="2"><c:set var="pageNo"
-            value="${empty param.pageNo ? '1' : param.pageNo }" /> <a
-          href="list.do?pageNo=${pageNo}">[목록]</a>
-          <c:if
-            test="${authUser.id == articleData.article.writer.id}">
-            <a href="modify.do?no=${articleData.article.number }">[게시글수정]</a>
-            <a href="delete.do?no=${articleData.article.number }">[게시글삭제]</a>
-          </c:if></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
+        <td colspan="2" class="text-right">
+            <c:set var="pageNo"
+                value="${empty param.pageNo ? '1' : param.pageNo }" /> 
+                <a href="list.do?pageNo=${pageNo}">[목록]</a>
+            <c:if
+                test="${authUser.id == articleData.article.writer.id}">
+                <a href="modify.do?no=${articleData.article.number }">[게시글수정]</a>
+                <a href="delete.do?no=${articleData.article.number }">[게시글삭제]</a>
+            </c:if></td>
       </tr>
     </table>
     
@@ -64,9 +70,11 @@
     댓글 폼 출력
     
     --%>
-    <u:replyForm articleNo="${articleData.article.number }"/>
+    <u:replyForm articleNo="${articleData.article.number }" />
     
     <u:listReply /> 
+
   </div>
+  
 </body>
 </html>

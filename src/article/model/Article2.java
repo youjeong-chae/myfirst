@@ -5,7 +5,14 @@ public class Article2 {
     private String fileName1;
     private String title;
     private int number;
+    private String content;
     
+    public String getContent() {
+        return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
+    }
     public String getFileName1() {
         return fileName1;
     }

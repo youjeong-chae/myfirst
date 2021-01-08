@@ -1,6 +1,22 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+.navbar-brand {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 50px;
+}
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap');
+div {
+    font-family: 'Yeon Sung', cursive;
+    font-size: 20px;
+}
+</style>
+
 
 <div class="container mb-3">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

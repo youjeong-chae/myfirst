@@ -224,7 +224,7 @@ public class ArticleDao {
 
     public List<Article2> selectMainList(Connection con) throws SQLException {
         //article2형식의 MainselectList
-        String sql = "SELECT a.article_no, a.title, c.file1 "
+        String sql = "SELECT a.article_no, a.title, c.file1, c.content "
                 + "FROM articles a JOIN article_contents c "
                 + "     ON a.article_no = c.article_no "
                 + "ORDER BY a.article_no DESC";
@@ -241,6 +241,7 @@ public class ArticleDao {
                 article2.setNumber(rs.getInt(1));
                 article2.setTitle(rs.getString(2));
                 article2.setFileName1(rs.getString(3));
+                article2.setContent(rs.getString(4));
                 
                 list.add(article2);
             }
